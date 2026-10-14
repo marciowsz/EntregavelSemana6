@@ -1,0 +1,18 @@
+# =============================================================================
+# 09_crontab.txt — Agendamento diário do backup
+# Instalar com:  crontab -e   (e colar a linha abaixo)
+# Conferir com:  crontab -l
+# =============================================================================
+#
+# ┌──────── minuto (0)
+# │ ┌────── hora (2 = 2h da manhã)
+# │ │ ┌──── dia do mês (todos)
+# │ │ │ ┌── mês (todos)
+# │ │ │ │ ┌ dia da semana (todos)
+# │ │ │ │ │
+  0 2 * * * /home/USUARIO/projeto-ecommerce/08_backup.sh >> /home/USUARIO/backups/postgres/cron.log 2>&1
+#
+# Observações:
+# - Use caminho ABSOLUTO para o script (o cron não carrega o seu PATH/diretório).
+# - Dê permissão de execução antes:  chmod +x 08_backup.sh
+# - A senha deve estar em ~/.pgpass do mesmo usuário dono do crontab.
